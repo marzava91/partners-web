@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MIJI Markets – Partners Web (Admin Panel & POS)
 
-## Getting Started
+Frontend web para **socios comerciales de MIJI Markets**.  
+Esta aplicación funciona como **Panel Administrativo + Punto de Venta (POS)** para tiendas asociadas, con soporte **offline**, enfoque **multi-tenant** y arquitectura escalable.
 
-First, run the development server:
+📍 Dominio objetivo: **https://partners.mijimarkets.com**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎯 Objetivo del Proyecto
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Proveer a los socios de MIJI Markets una plataforma web para:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Gestionar productos, precios e inventario
+- Operar ventas mediante POS web
+- Administrar pedidos y estados
+- Configurar tienda, horarios y preferencias
+- Operar **offline-first** en entornos con conectividad limitada
+- Sincronizar datos con el Core Platform API
 
-## Learn More
+Este frontend **NO contiene lógica de negocio crítica**; consume APIs del backend central.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧱 Arquitectura General
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+┌─────────────────────────────┐
+│ partners.mijimarkets.com │
+│ (Next.js App Router) │
+└───────────────▲─────────────┘
+│ HTTP / WS
+┌───────────────┴─────────────┐
+│ Core Platform API (NestJS) │
+│ PostgreSQL + Prisma │
+└─────────────────────────────┘
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛠️ Stack Tecnológico
+
+### Frontend
+- **Next.js 16** (App Router)
+- **React + TypeScript**
+- **Tailwind CSS**
+- **shadcn/ui**
+- **lucide-react** (iconografía)
+
+### Estado & Datos
+- **TanStack Query** → server state
+- **Zustand** → UI & local state
+- **React Hook Form + Zod** → formularios y validación
+
+### Offline & PWA
+- **PWA (next-pwa)**
+- **IndexedDB (Dexie)** para cache y operación offline
+- Estrategia *offline-first + sync posterior*
+
+### Backend (referencia)
+- **NestJS**
+- **PostgreSQL**
+- **Prisma**
+- Arquitectura multi-tenant
+
+---
+
+## 📁 Estructura del Proyecto
+
+```txt
+
+app/                        # App Router (layouts y routes)
+├── (auth)/                 # Login, recuperación, etc.
+├── (partner)/              # Área protegida del socio
+├── layout.tsx
+├── page.tsx
+└── globals.css
+
+src/
+├── modules/
+│   ├── auth/
+│   ├── inventory/
+│   ├── orders/
+│   ├── pos/
+│   ├── products/
+│   └── settings/
+└── shared/
+    ├── api/
+    ├── hooks/
+    ├── types/
+    ├── ui/
+    └── utils/
+
+
+src/
+├── modules/                # Dominios funcionales
+│   ├── auth/
+│   ├── products/
+│   ├── inventory/
+│   ├── orders/
+│   ├── pos/
+│   └── settings/
+│
+├── shared/                 # Código reutilizable
+│   ├── api/                # Clients HTTP / fetchers
+│   ├── ui/                 # Componentes UI base
+│   ├── hooks/              # Hooks compartidos
+│   ├── types/              # Tipos globales
+│   └── utils/              # Helpers
+│
+public/                     # Assets estáticos

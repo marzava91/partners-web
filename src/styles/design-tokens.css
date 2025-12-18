@@ -1,0 +1,13 @@
+/* Design tokens and small component helpers */
+:root {
+  --brand-100: #e6f6f1;
+  --brand-500: #1f5d50;
+  --brand-700: #154940;
+  --login-card-radius: 1rem;
+  --link-color: var(--brand-500);
+  --heading-font-weight: 700;
+}
+
+/* small utilities used by the login design */
+.login-hero-title { font-size: 2rem; font-weight: var(--heading-font-weight); }
+.link { color: var(--link-color); text-decoration: underline; }
