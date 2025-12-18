@@ -11,3 +11,12 @@
 /* small utilities used by the login design */
 .login-hero-title { font-size: 2rem; font-weight: var(--heading-font-weight); }
 .link { color: var(--link-color); text-decoration: underline; }
+
+/* Auth-specific helpers */
+.auth-hero { min-height: 100vh; }
+.auth-panel { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+.auth-card { border-radius: 1rem; box-shadow: 0 8px 24px rgba(16,24,40,0.08); }
+
+@media (max-width: 767px) {
+  .auth-card { border-radius: 0.5rem; }
+}

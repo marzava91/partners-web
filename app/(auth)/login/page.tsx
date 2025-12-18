@@ -56,16 +56,25 @@ export default function LoginPage() {
       {/* Left hero (hidden on small screens) */}
       <div className="hidden md:flex md:col-span-7 relative items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-[url('/images/login-bg-placeholder.svg')] bg-cover bg-center" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0f3b33]/80 to-transparent" />
-        <div className="relative z-10 w-full h-full flex items-center justify-center px-8">
-          <div className="max-w-md text-white">
-            <div className="w-40 mb-8">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0f3b33]/85 to-transparent" />
+
+        {/* big white curved card inside hero (placeholder) */}
+        <div className="relative z-10 w-full h-full flex items-center">
+          <div className="ml-16 max-w-2xl text-white">
+            <div className="w-44 mb-6">
               <img src="/images/logo-placeholder.svg" alt="logo" className="w-full h-auto" />
             </div>
-            <h1 className="text-4xl font-semibold leading-tight mb-2">Bienvenido a Partners</h1>
-            <p className="text-lg text-white/80">Administra tus tiendas fácilmente desde un solo panel.</p>
+            <h1 className="text-4xl md:text-5xl font-semibold leading-tight mb-3">Bienvenido a Partners</h1>
+            <p className="text-lg text-white/80 max-w-lg">Administra tus tiendas fácilmente desde un solo panel.</p>
           </div>
-          <div className="absolute right-8 bottom-12 w-1/2 max-w-sm opacity-90">
+
+          {/* curved white panel with illustration */}
+          <div className="absolute left-0 bottom-8 ml-8 w-2/3 max-w-2xl pointer-events-none">
+            <img src="/images/card-white-curved-placeholder.svg" alt="card white" className="w-full h-auto rounded-3xl shadow-2xl" />
+          </div>
+
+          {/* small floating illustration */}
+          <div className="absolute left-20 bottom-36 w-36 opacity-90">
             <img src="/images/card-illustration-placeholder.svg" alt="illustration" className="w-full h-auto" />
           </div>
         </div>
@@ -74,9 +83,9 @@ export default function LoginPage() {
       {/* Right form */}
       <div className="col-span-1 md:col-span-5 flex items-center justify-center p-6">
         <div className="w-full max-w-md">
-          <Card className="bg-card/90 backdrop-blur-md">
+          <Card className="bg-white auth-card border border-gray-100">
             <CardHeader>
-              <CardTitle className="text-xl">Partners · Iniciar sesión</CardTitle>
+              <CardTitle className="text-lg">Partners · Iniciar sesión</CardTitle>
               <p className="text-sm text-muted-foreground">Ingresa con tu cuenta para continuar</p>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -103,7 +112,7 @@ export default function LoginPage() {
                   )}
                 </div>
 
-                <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
+                <Button type="submit" className="w-full bg-black text-white hover:bg-black/90" disabled={form.formState.isSubmitting}>
                   {form.formState.isSubmitting ? "Ingresando..." : "Ingresar"}
                 </Button>
 
