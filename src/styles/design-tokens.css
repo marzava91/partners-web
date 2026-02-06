@@ -6,6 +6,13 @@
   --login-card-radius: 1rem;
   --link-color: var(--brand-500);
   --heading-font-weight: 700;
+  --miji-orange: #F05A28;
+  --miji-orange-2: #FF6A2A;
+  --miji-yellow: #F7C844;
+  --miji-ink: #121212;
+  --miji-muted: #6B7280;
+  --miji-card: #FFFFFF;
+  --miji-surface: #FFF7EC;
 }
 
 /* small utilities used by the login design */

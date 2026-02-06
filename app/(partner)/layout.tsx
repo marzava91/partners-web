@@ -1,10 +1,6 @@
 import type { ReactNode } from "react";
+import PartnerShell from "./components/PartnerShell";
 
 export default function PartnerLayout({ children }: { children: ReactNode }) {
-  return (
-    <div className="min-h-screen">
-      {/* v1: placeholder. Fase 2: Sidebar + Topbar */}
-      <div className="p-6">{children}</div>
-    </div>
-  );
+  return <PartnerShell>{children}</PartnerShell>;
 }
